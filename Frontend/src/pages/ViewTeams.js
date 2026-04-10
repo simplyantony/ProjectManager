@@ -36,14 +36,12 @@ export default function ViewTeams() {
 
             {teams.length === 0 ? (
                 <div className="empty-state card">
-                    <div className="icon">👥</div>
                     <p>No teams yet. <Link to="/teams/create">Create the first one</Link>.</p>
                 </div>
             ) : (
                 <div className="team-grid">
                     {teams.map((team) => (
                         <div className="team-card" key={team._id}>
-                            <div className="team-icon">👥</div>
                             <div>
                                 <div className="team-name">{team.name}</div>
                                 <div className="team-date">

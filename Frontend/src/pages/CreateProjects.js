@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import API from '../api';
 
-const initialForm = { name: '', description: '', productOwner: '', manager: '', team: '' };
+const initialForm = {name: '', description: '', productOwner: '', manager: '', team: ''};
 
 export default function CreateProject() {
     const [form, setForm] = useState(initialForm);
@@ -17,11 +17,12 @@ export default function CreateProject() {
                 setUsers(u.data);
                 setTeams(t.data);
             })
-            .catch(() => {})
+            .catch(() => {
+            })
             .finally(() => setDataLoading(false));
     }, []);
 
-    const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+    const handleChange = (e) => setForm({...form, [e.target.name]: e.target.value});
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,10 +30,10 @@ export default function CreateProject() {
         setMessage(null);
         try {
             const res = await API.post('/projects', form);
-            setMessage({ type: 'success', text: `✅ Project "${res.data.name}" created successfully!` });
+            setMessage({type: 'success', text: `Project "${res.data.name}" created successfully!`});
             setForm(initialForm);
         } catch (err) {
-            setMessage({ type: 'error', text: err.response?.data?.message || 'Failed to create project.' });
+            setMessage({type: 'error', text: err.response?.data?.message || 'Failed to create project.'});
         } finally {
             setLoading(false);
         }
@@ -41,7 +42,7 @@ export default function CreateProject() {
     if (dataLoading) {
         return (
             <div className="loading">
-                <div className="spinner" />
+                <div className="spinner"/>
                 Loading users and teams...
             </div>
         );
@@ -54,15 +55,16 @@ export default function CreateProject() {
                 <p>Fill in the details to start a new project.</p>
             </div>
 
-            <div className="card" style={{ maxWidth: 560 }}>
+            <div className="card" style={{maxWidth: 560}}>
                 {users.length === 0 && (
-                    <div className="alert alert-error" style={{ marginBottom: '1.25rem' }}>
-                        ⚠️ No users found. Please <a href="/signup">signup at least one user</a> before creating a project.
+                    <div className="alert alert-error" style={{marginBottom: '1.25rem'}}>
+                        No users found. Please <a href="/signup">signup at least one user</a> before creating a project.
                     </div>
                 )}
                 {teams.length === 0 && (
-                    <div className="alert alert-error" style={{ marginBottom: '1.25rem' }}>
-                        ⚠️ No teams found. Please <a href="/teams/create">create at least one team</a> before creating a project.
+                    <div className="alert alert-error" style={{marginBottom: '1.25rem'}}>
+                        No teams found. Please <a href="/teams/create">create at least one team</a> before creating a
+                        project.
                     </div>
                 )}
 
@@ -89,7 +91,7 @@ export default function CreateProject() {
                             placeholder="Brief description of the project..."
                             rows={3}
                             required
-                            style={{ resize: 'vertical' }}
+                            style={{resize: 'vertical'}}
                         />
                     </div>
 
@@ -146,7 +148,7 @@ export default function CreateProject() {
                         type="submit"
                         disabled={loading || users.length === 0 || teams.length === 0}
                     >
-                        {loading ? 'Creating...' : '📋 Create Project'}
+                        {loading ? 'Creating...' : 'Create Project'}
                     </button>
                 </form>
 

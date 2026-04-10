@@ -35,7 +35,6 @@ export default function ViewProjects() {
 
             {projects.length === 0 ? (
                 <div className="empty-state card">
-                    <div className="icon">📋</div>
                     <p>No projects yet. <Link to="/projects/create">Create the first one</Link>.</p>
                 </div>
             ) : (
