@@ -2,10 +2,10 @@
   "name": "teams",
   "version": "1.0.0",
   "description": "ICSI 418Y - Programming Assignment 3 - MERN Project Management App",
-  "main": "Backend/server.js",
+  "main": "../Backend/server.js",
   "scripts": {
-    "start": "node Backend/server.js",
-    "dev": "nodemon Backend/server.js"
+    "start": "node ../Backend/server.js",
+    "dev": "../node_modules/.bin/nodemon Backend/server.js"
   },
   "private": true,
   "dependencies": {
